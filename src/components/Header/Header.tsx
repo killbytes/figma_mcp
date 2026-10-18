@@ -30,6 +30,9 @@ export function Header() {
                             <img src={User} alt="Logo" className={classes.logoimg}/>
                             Обо мне
                         </Anchor>
+                        <Link to="/table" className={classes.link}>
+                            Table
+                        </Link>
                     </Group>
                     <Text style={{width: '100px'}}/>
                 </Group>

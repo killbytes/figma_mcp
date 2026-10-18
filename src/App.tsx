@@ -4,6 +4,7 @@ import {VacancyPage} from './pages/VacancyPage/VacancyPage';
 import {Layout} from "@/Layout.tsx";
 import {VacanciesLayout} from "@/pages/VacanciesLayout/VacanciesLayout.tsx";
 import {ErrorPage} from "@/pages/ErrorPage/ErrorPage.tsx";
+import {Table} from "@/pages/Table.jsx";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,6 +17,7 @@ export const router = createBrowserRouter(
                         <Route path=":city" element={<JobsPage />} />
                     </Route>
                     <Route path="vacancies/:id" element={<VacancyPage />} />
+                    <Route path="table" element={<Table />} />
                 </Route>
             </Route>
 
