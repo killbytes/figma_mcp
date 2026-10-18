@@ -1,0 +1,47 @@
+.header {
+  height: 64px;
+  border-bottom: 1px solid #e9ecef;
+  background: #fff;
+
+  .link_logo {
+    text-decoration: none;
+    color: #000;
+  }
+}
+
+.inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  //color: #4263eb;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -2px;
+  align-items: center;
+  display: flex;
+}
+
+.logoimg {
+  margin-right: 10px;
+}
+
+.link {
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex !important;
+  align-items: center;
+}
+
+
+.link:hover {
+  color: #4263eb;
+}
+
+.about {
+  align-items: center;
+  display: flex !important;
+}
