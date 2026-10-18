@@ -4,7 +4,7 @@ import {VacancyPage} from './pages/VacancyPage/VacancyPage';
 import {Layout} from "@/Layout.tsx";
 import {VacanciesLayout} from "@/pages/VacanciesLayout/VacanciesLayout.tsx";
 import {ErrorPage} from "@/pages/ErrorPage/ErrorPage.tsx";
-import {Table} from "@/pages/Table.jsx";
+import {Table} from "@/pages/Table/Table.jsx";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(

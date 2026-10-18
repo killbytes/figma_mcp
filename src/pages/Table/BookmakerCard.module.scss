@@ -1,17 +1,61 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 20px;
-  min-height: 100%;
-}
-
-.card {
+.cardWrapper {
   width: 100%;
   max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* BEST BONUS Badge */
+.badge {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: #fff;
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.badgeArrows {
+  display: flex;
+  gap: 4px;
+}
+
+.badgeArrowLeft,
+.badgeArrowRight {
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.badgeArrowLeft {
+  border-width: 6px 8px 6px 0;
+  border-color: transparent #ff630c transparent transparent;
+}
+
+.badgeArrowRight {
+  border-width: 6px 0 6px 8px;
+  border-color: transparent transparent transparent #ff630c;
+}
+
+.badgeText {
+  font-size: 14px;
+  font-weight: 500;
+  color: #313446;
+  white-space: nowrap;
+}
+
+/* Card */
+.card {
+  width: 100%;
   background: #f7f8fd;
   border-radius: 15px;
   padding: 20px 0 16px 0;
+  position: relative;
 }
 
 /* Header */
@@ -30,7 +74,6 @@
 }
 
 .rankNumber {
-  font-family: 'Rubik', sans-serif;
   font-size: 18px;
   font-weight: 500;
   background: linear-gradient(180deg, #ffc736 0%, #ff630c 100%);
@@ -45,7 +88,6 @@
 }
 
 .brandName {
-  font-family: 'Rubik', sans-serif;
   font-size: 18px;
   font-weight: 500;
   color: #313446;
@@ -59,7 +101,6 @@
 }
 
 .rating {
-  font-family: 'Rubik', sans-serif;
   font-size: 17px;
   font-weight: 500;
   color: #313446;
@@ -132,14 +173,12 @@
 }
 
 .bonusLabel {
-  font-family: 'Rubik', sans-serif;
   font-size: 14px;
   font-weight: 500;
   color: #72768d;
 }
 
 .bonusTitle {
-  font-family: 'Rubik', sans-serif;
   font-size: 24px;
   font-weight: 700;
   color: #313446;
@@ -148,7 +187,6 @@
 }
 
 .bonusDescription {
-  font-family: 'Rubik', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #72768d;
@@ -177,7 +215,6 @@
 }
 
 .featureText {
-  font-family: 'Rubik', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #72768d;
@@ -228,7 +265,6 @@
   border: none;
   border-radius: 10px;
   color: #ffffff;
-  font-family: 'Rubik', sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -246,7 +282,6 @@
   border: none;
   border-radius: 10px;
   color: #6f728c;
-  font-family: 'Rubik', sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -276,10 +311,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .moreInfoText {
-  font-family: 'Rubik', sans-serif;
   font-size: 13px;
   font-weight: 400;
   color: #a6aac3;
@@ -288,52 +326,140 @@
 .angleDownIcon {
   width: 15px;
   height: 15px;
+  transition: transform 0.3s ease;
+
+  &.angleUp {
+    transform: rotate(180deg);
+  }
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
+/* Expanded Content */
+.expandedContent {
+  padding: 16px;
+  border-top: 1px solid rgba(235, 236, 245, 0.6);
+  margin-top: 12px;
+}
+
+.expandedGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.expandedDescriptionSection {
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #72768d;
+    line-height: 25px;
+    margin: 0;
+  }
+}
+
+.expandedProsSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.prosBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border: 2px solid #ebecf5;
+  border-radius: 15px;
+}
+
+.prosItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.prosCheck {
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  &.prosCheckGreen {
+    color: #53af1b;
+  }
+
+  &.prosCheckRed {
+    color: #e74c3c;
+  }
+}
+
+.prosText {
+  font-size: 14px;
+  font-weight: 400;
+  color: #72768d;
+  line-height: 25px;
+}
+
+.expandedPayments {
+  margin-top: 16px;
+}
+
+.expandedPaymentsGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 53px);
+  gap: 8px;
+}
+
+/* Responsive - Tablet (iPhone 13 Pro Max: 428px) */
+@media (max-width: 428px) {
+  .cardWrapper {
+    max-width: 408px;
+  }
+
+  .card {
+    padding: 16px 0 12px 0;
+  }
+
+  .header {
+    padding: 0 10px 10px 10px;
+  }
+
   .content {
     flex-wrap: wrap;
-  }
-
-  .paymentsSection {
-    order: 4;
-    width: 100%;
-    margin-top: 16px;
-  }
-
-  .buttonsSection {
-    order: 3;
-  }
-}
-
-@media (max-width: 768px) {
-  .content {
-    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
   }
 
   .logoSection {
-    width: 100%;
+    width: 72px;
   }
 
   .logoBg {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 148 / 125;
+    width: 72px;
+    height: 60px;
+  }
+
+  .logo {
+    width: 53px;
+    height: 18px;
   }
 
   .bonusSection {
-    width: 100%;
+    flex: 1;
+    min-width: calc(100% - 84px);
   }
 
   .featuresSection {
     width: 100%;
-    order: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    min-width: auto;
   }
 
   .paymentsSection {
-    order: 4;
     width: 100%;
+    min-width: auto;
   }
 
   .paymentsGrid {
@@ -345,8 +471,79 @@
   }
 
   .buttonsSection {
-    order: 5;
+    flex-direction: row;
     width: 100%;
+    margin-left: 0;
+    gap: 8px;
+  }
+
+  .claimButton,
+  .reviewButton {
+    flex: 1;
+    width: auto;
+  }
+
+  .expandedGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .expandedProsSection {
+    grid-template-columns: 1fr;
+  }
+
+  .expandedPaymentsGrid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Responsive - Mobile (iPhone SE: 320px) */
+@media (max-width: 320px) {
+  .cardWrapper {
+    max-width: 300px;
+  }
+
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .headerRight {
+    margin-left: auto;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .logoSection {
+    width: 72px;
+  }
+
+  .logoBg {
+    width: 72px;
+    height: 84px;
+  }
+
+  .bonusSection {
+    width: calc(100% - 84px);
+    min-width: auto;
+  }
+
+  .featuresSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .paymentsSection {
+    width: 100%;
+  }
+
+  .paymentsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .buttonsSection {
+    flex-direction: column;
   }
 
   .claimButton,
@@ -354,33 +551,44 @@
     width: 100%;
   }
 
-  .header {
-    flex-wrap: wrap;
+  .expandedPaymentsGrid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 12px;
+/* Intermediate breakpoint (between 320px and 428px) */
+@media (min-width: 321px) and (max-width: 428px) {
+  .paymentsGrid {
+    grid-template-columns: repeat(4, 1fr);
   }
+}
 
-  .card {
-    padding: 16px 0 12px 0;
-  }
-
-  .header {
-    padding: 0 12px 10px 12px;
+/* Small desktop */
+@media (min-width: 429px) and (max-width: 768px) {
+  .cardWrapper {
+    max-width: 100%;
   }
 
   .content {
-    padding: 12px;
+    flex-wrap: wrap;
   }
 
-  .bonusTitle {
-    font-size: 20px;
+  .featuresSection {
+    min-width: auto;
   }
 
-  .paymentsGrid {
-    grid-template-columns: repeat(3, 1fr);
+  .paymentsSection {
+    min-width: auto;
+  }
+
+  .buttonsSection {
+    flex-direction: row;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .claimButton,
+  .reviewButton {
+    flex: 1;
   }
 }
