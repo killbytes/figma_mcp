@@ -43,6 +43,6 @@ export const router = createBrowserRouter(
         </>,
     ),
     {
-        basename: '/529_job_site',
+        basename: '/529_job_site_table',
     },
 );
