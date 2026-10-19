@@ -2,7 +2,7 @@
 
 Vite + React + TypeScript + Mantine + Redux Toolkit + RTK Query + React-router.
 
-[`link-page`](https://killbytes.github.io/529_job_site//table)
+[`link-page`](https://killbytes.github.io/figma_mcp/table)
 
 opencode mcp add figma --url https://mcp.figma.com/mcp
 opencode mcp list
